@@ -27,10 +27,10 @@
         default_layer {
             display-name = "MAIN";
             bindings = <
-&mt LGUI ESC             &kp Q  &kp W  &kp E                   &kp R        &kp T      &kp Y        &kp U      &kp I         &kp O    &kp P     &kp LBRC
-&mt LCTRL RIGHT_BRACKET  &kp A  &kp S  &kp D                   &kp F        &kp G      &kp H        &kp J      &kp K         &kp L    &kp SEMI  &mt RCTRL SQT
-&mt LSHFT NUBS           &kp Z  &kp X  &kp C                   &kp V        &kp B      &kp N        &kp M      &kp COMMA     &kp DOT  &kp FSLH  &mt RSHIFT BSLH
-                                       &mt LEFT_ALT BACKSPACE  &lt 1 SPACE  &lt 2 RET  &lt LWR ESC  &lt 2 TAB  &mt RALT DEL
+&mt LGUI ESC             &kp Q  &kp W  &kp E                   &kp R        &kp T      &kp Y          &kp U      &kp I         &kp O    &kp P     &mt RIGHT_GUI LEFT_BRACKET
+&mt LCTRL RIGHT_BRACKET  &kp A  &kp S  &kp D                   &kp F        &kp G      &kp H          &kp J      &kp K         &kp L    &kp SEMI  &mt RCTRL SQT
+&mt LSHFT NUBS           &kp Z  &kp X  &kp C                   &kp V        &kp B      &kp N          &kp M      &kp COMMA     &kp DOT  &kp FSLH  &mt RSHIFT BSLH
+                                       &mt LEFT_ALT BACKSPACE  &lt 1 SPACE  &lt 2 RET  &lt LWR ENTER  &lt 2 TAB  &mt RALT DEL
             >;
         };
 
@@ -47,10 +47,10 @@
         raise_layer {
             display-name = "NUM";
             bindings = <
-&kp LGUI          &kp F11  &kp F12  &kp K_PREV  &kp K_PLAY_PAUSE  &kp K_NEXT  &kp HOME  &kp PG_UP     &kp UP_ARROW  &kp PAGE_DOWN  &trans  &kp INS
-&kp LSHFT         &kp F1   &kp F2   &kp F3      &kp F4            &kp F5      &kp END   &kp LEFT      &kp DOWN      &kp RIGHT      &trans  &kp PRINTSCREEN
-&kp LEFT_CONTROL  &kp F6   &kp F7   &kp F8      &kp F9            &kp F10     &trans    &kp C_VOL_DN  &kp K_MUTE    &kp C_VOL_UP   &trans  &trans
-                                    &trans      &trans            &trans      &trans    &trans        &trans
+&kp LGUI          &kp F11  &kp F12  &kp K_PREV  &kp K_PLAY_PAUSE  &kp K_NEXT  &kp HOME    &kp PG_UP     &kp UP_ARROW  &kp PAGE_DOWN  &trans  &kp INS
+&kp LSHFT         &kp F1   &kp F2   &kp F3      &kp F4            &kp F5      &kp END     &kp LEFT      &kp DOWN      &kp RIGHT      &trans  &kp PRINTSCREEN
+&kp LEFT_CONTROL  &kp F6   &kp F7   &kp F8      &kp F9            &kp F10     &kp K_UNDO  &kp C_VOL_DN  &kp K_MUTE    &kp C_VOL_UP   &trans  &trans
+                                    &trans      &trans            &trans      &trans      &trans        &trans
             >;
         };
 
