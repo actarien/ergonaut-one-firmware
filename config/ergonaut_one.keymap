@@ -1,6 +1,7 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
+#include <behaviors/rgbled_widget.dtsi> // pour le driver d'affichage via les LEDs
 
 #define DEF 0
 #define LWR 1
@@ -59,7 +60,7 @@
             bindings = <
 &bootloader  &studio_unlock  &none         &none         &none         &none         &none         &none         &none         &none         &studio_unlock  &bootloader
 &bt BT_CLR   &bt BT_SEL 0    &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &bt BT_SEL 4  &bt BT_SEL 3  &bt BT_SEL 2  &bt BT_SEL 1  &bt BT_SEL 0    &bt BT_CLR
-&sys_reset   &none           &none         &none         &none         &none         &none         &none         &none         &none         &none           &sys_reset
+&sys_reset   &none           &none         &none         &ind_con      &ind_bat      &ind_bat      &ind_con      &none         &none         &none           &sys_reset
                                            &trans        &none         &trans        &none         &trans        &trans
             >;
         };
