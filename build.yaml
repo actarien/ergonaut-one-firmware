@@ -1,8 +1,8 @@
 include:
   - board: seeeduino_xiao_ble
-    shield: ergonaut_one_left
+    shield: ergonaut_one_left rgbled_adapter
   - board: seeeduino_xiao_ble
-    shield: ergonaut_one_right
+    shield: ergonaut_one_right rgbled_adapter
   - board: seeeduino_xiao_ble
     shield: ergonaut_one_left
     snippet: studio-rpc-usb-uart
@@ -15,5 +15,3 @@ include:
     artifact-name: ergonaut_one_right_studio
   - board: seeeduino_xiao_ble
     shield: settings_reset
-  - board: seeeduino_xiao_ble
-    shield: hummingbird rgbled_adapter
