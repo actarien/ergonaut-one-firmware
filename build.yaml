@@ -15,3 +15,5 @@ include:
     artifact-name: ergonaut_one_right_studio
   - board: seeeduino_xiao_ble
     shield: settings_reset
+  - board: seeeduino_xiao_ble
+    shield: hummingbird rgbled_adapter
