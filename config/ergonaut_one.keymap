@@ -64,7 +64,7 @@
         };
 
         // Mod-Tap avec Tap-Dance (pour Caps-Word/Caps-Lock) :
-        mt_td0: mod_tap {
+        mt_td0: mod_tap_dance_caps {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             flavor = "hold-preferred";
@@ -73,7 +73,7 @@
             display-name = "Mod-Tap-DanceCaps";
         };
         // Layer-Tap avec Tap-Dance (pour Caps-Word/Caps-Lock) :
-        lt_td0: layer_tap {
+        lt_td0: layer_tap_dance_caps {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             flavor = "tap-preferred";
