@@ -54,6 +54,14 @@
                                                     36 37 38 >;
             hold-trigger-on-release;
         };
+
+      // Tap-Dance (pour Caps-Word/Caps-Lock) :
+      td0: tap_dance_0 {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&caps_word>, <&caps_lock> /*, <&kp N3> */ ;
+      };
     };
 };
 
@@ -76,7 +84,7 @@
 &mt LGUI ESC             &kp Q  &kp W  &kp E                   &kp R        &kp T      &kp Y          &kp U      &kp I         &kp O    &kp P     &mt RIGHT_GUI LEFT_BRACKET
 &mt LCTRL RIGHT_BRACKET  &hml LGUI A  &hml LALT S  &hml LCTRL D  &hml LSHFT F  &kp G      &kp H       &hmr RSHFT J      &hmr RCTRL K         &hmr LALT L    &hmr RGUI SEMI  &mt RCTRL SQT
 &mt LSHFT NUBS           &kp Z  &kp X  &kp C                   &kp V        &kp B      &kp N          &kp M      &kp COMMA     &kp DOT  &kp FSLH  &mt RSHIFT BSLH
-                                       &mt LEFT_ALT BACKSPACE  &lt 1 SPACE  &lt 2 RET  &lt LWR ENTER  &lt 2 TAB  &mt RALT DEL
+                                       &mt LALT BACKSPACE  &mt LCTRL TAB  &lt LWR SPACE  &lt RSE ENTER  &mt RSHIFT &td0  &mt RALT DEL
             >;
         };
 
@@ -86,7 +94,7 @@
 &mt LGUI GRAVE       &kp NUMBER_1      &kp NUMBER_2      &kp NUMBER_3      &kp NUMBER_4      &kp N5      &kp NUMBER_6      &kp N7          &kp N8       &kp N9       &kp N0      &kp MINUS
 &mt LCTRL LS(GRAVE)  &kp LS(NUMBER_1)  &kp LS(NUMBER_2)  &kp LS(NUMBER_3)  &kp LS(NUMBER_4)  &kp LS(N5)  &kp LS(NUMBER_6)  &kp LS(N7)      &kp LS(N8)   &kp LS(N9)   &kp LS(N0)  &mt RCTRL LS(MINUS)
 &mt LSHIFT EQUAL     &trans            &kp LS(DELETE)    &kp LC(INS)       &kp LS(INS)       &trans      &trans            &kp LS(DELETE)  &kp LC(INS)  &kp LS(INS)  &trans      &kp LS(EQUAL)
-                                                         &trans            &trans            &trans      &trans            &trans          &trans
+                                       &trans            &lt RSE TAB       &trans      &trans            &trans          &trans
             >;
         };
 
@@ -96,7 +104,7 @@
 &kp LGUI          &kp F11  &kp F12  &kp K_PREV  &kp K_PLAY_PAUSE  &kp K_NEXT  &kp HOME    &kp PG_UP     &kp UP_ARROW  &kp PAGE_DOWN  &trans  &kp INS
 &kp LSHFT         &kp F1   &kp F2   &kp F3      &kp F4            &kp F5      &kp END     &kp LEFT      &kp DOWN      &kp RIGHT      &trans  &kp PRINTSCREEN
 &kp LEFT_CONTROL  &kp F6   &kp F7   &kp F8      &kp F9            &kp F10     &kp K_UNDO  &kp C_VOL_DN  &kp K_MUTE    &kp C_VOL_UP   &trans  &trans
-                                    &trans      &trans            &trans      &trans      &trans        &trans
+                                    &trans      &trans            &trans      &trans      &lt LWR &td0  &trans
             >;
         };
 
