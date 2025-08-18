@@ -1,4 +1,4 @@
-# -*- c -*-
+// -*- c -*-
 
 // Configuration du clavier Ergonaut One sous ZMK
 
@@ -114,7 +114,7 @@
             #binding-cells = <0>;
             flavor = "hold-preferred";
             tapping-term-ms = <200>;
-            bindings = <&mt RSHIFT &caps_word]>, <&kp CAPSLOCK>;
+            bindings = <&mt RSHIFT &caps_word>, <&kp CAPSLOCK>;
             display-name = "Tap-Dance-Mod-Caps";
         };
     };
