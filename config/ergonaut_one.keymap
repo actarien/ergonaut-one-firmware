@@ -1,28 +1,53 @@
+# -*- c -*-
+
+// Configuration du clavier Ergonaut One sous ZMK
+
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
 #include <behaviors/rgbled_widget.dtsi> // pour le driver d'affichage via les LEDs
 
+// Définition des indices des 4 couches utilisées
 #define DEF 0
 #define LWR 1
 #define RSE 2
 #define ADJ 3
 
-&lt { quick-tap-ms = <200>; };
+// Réglages lt = layer-tap
+&lt {
+    // Délai max durant lequel une touche tap-[layer]hold est considérée comme
+    // une frappe [tap] si une autre touche est frappée durant ce délai
+    // (permet d'éviter l'activation par erreur de maintien [hold] en cas de frappe rapide)
+    quick-tap-ms = <200>;
+};
 
+// Réglages mt = mod-tap
 &mt {
-  // sélectionne la touche 'maintenue' avant le tapping-term-ms
-  // uniquement si une autre touche est appuyée puis relachée avant
-  // de relacher celle-ci
-  flavor = "balanced";
-  // si on refait une touche tapée précédemment en mode 'frappe'
-  // dans un délai inférieur à quick-tap-ms, cette frappe est répétée
-  // (auto-répétition)
-  quick-tap-ms = <200>;
+    // Sélectionne la touche 'maintenue' avant le tapping-term-ms
+    // uniquement si une autre touche est appuyée puis relachée avant
+    // de relacher celle-ci
+    flavor = "balanced";
+    // Délai max durant lequel une touche tap-[mod]hold est considérée comme
+    // une frappe [tap] si une autre touche est frappée durant ce délai
+    // (permet d'éviter l'activation par erreur de maintien [hold] en cas de frappe rapide)
+    quick-tap-ms = <200>;
+};
+
+// Réglage du mode caps_word : maintien du SHIFT jusqu'à une touche non alphanumérique
+&caps_word {
+    // on configure quelles touches permettent de continuer en mode CAPS :
+    // Par défaut, outre les touches alpha-numériques, UNDERSCORE, BACKSPACE et DELETE.
+    // Mais il y a un loup :
+    // certaines lettres BÉPO sont câblées sur des touches non
+    // alpha-numériques en QWERTY, il faut donc reconfigurer la bonne liste !
+    // Le défaut, c'est qu'on ne peut pas retirer de touches
+    // alpha-numériques QWERTY qui ne sont pas des lettres/chiffres : ^ sur le Y, etc…
+    continue-list = <UNDERSCORE BACKSPACE DELETE LEFT_BRACKET RIGHT_BRACKET SEMI SQT NUBS COMMA DOT FSLH BSLH>;
 };
 
 / {
     behaviors {
+        // Activation/configuration du Home-Row-Mod pour le clavier gauche
         hml: home_row_mod_left {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
@@ -39,6 +64,7 @@
                                            39 40 41 >;
             hold-trigger-on-release;
         };
+        // Activation/configuration du Home-Row-Mod pour le clavier droit
         hmr: home_row_mod_right {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
@@ -81,6 +107,16 @@
             bindings = <&mo>, <&td0>;
             display-name = "Layer-Tap-DanceCaps";
         };
+
+        // Tap-Dance avec Mod-Tap (pour Caps-Word/Caps-Lock) :
+        mt_td1: tap_dance_mod_caps {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            flavor = "hold-preferred";
+            tapping-term-ms = <200>;
+            bindings = <&mt RSHIFT &caps_word]>, <&kp CAPSLOCK>;
+            display-name = "Tap-Dance-Mod-Caps";
+        };
     };
 };
 
@@ -88,6 +124,7 @@
     conditional_layers {
         compatible = "zmk,conditional-layers";
 
+        // Active la couche ADJust quand les deux couches LoWeR et RaiSE sont activés
         tri-layer {
             if-layers = <LWR RSE>;
             then-layer = <ADJ>;
@@ -103,7 +140,7 @@
 &mt LGUI ESC             &kp Q  &kp W  &kp E                   &kp R        &kp T      &kp Y          &kp U      &kp I         &kp O    &kp P     &mt RIGHT_GUI LEFT_BRACKET
 &mt LCTRL RIGHT_BRACKET  &hml LGUI A  &hml LALT S  &hml LCTRL D  &hml LSHFT F  &kp G      &kp H       &hmr RSHFT J      &hmr RCTRL K         &hmr LALT L    &hmr RGUI SEMI  &mt RCTRL SQT
 &mt LSHFT NUBS           &kp Z  &kp X  &kp C                   &kp V        &kp B      &kp N          &kp M      &kp COMMA     &kp DOT  &kp FSLH  &mt RSHIFT BSLH
-                                       &mt LALT BACKSPACE  &mt LCTRL TAB  &lt LWR SPACE  &lt RSE ENTER  &mt_td0 RSHIFT 0  &mt RALT DEL
+                                       &mt LALT BACKSPACE  &mt LCTRL TAB  &lt LWR SPACE  &lt RSE ENTER  &mt_td1  &mt RALT DEL
             >;
         };
 
@@ -123,7 +160,7 @@
 &kp LGUI          &kp F11  &kp F12  &kp K_PREV  &kp K_PLAY_PAUSE  &kp K_NEXT  &kp HOME    &kp PG_UP     &kp UP_ARROW  &kp PAGE_DOWN  &trans  &kp INS
 &kp LSHFT         &kp F1   &kp F2   &kp F3      &kp F4            &kp F5      &kp END     &kp LEFT      &kp DOWN      &kp RIGHT      &trans  &kp PRINTSCREEN
 &kp LEFT_CONTROL  &kp F6   &kp F7   &kp F8      &kp F9            &kp F10     &kp K_UNDO  &kp C_VOL_DN  &kp K_MUTE    &kp C_VOL_UP   &trans  &trans
-                                    &trans      &trans            &trans      &trans      &lt_td0 LWR 0  &trans
+                                    &trans      &trans            &trans      &trans      &mt_td1  &trans
             >;
         };
 

@@ -41,7 +41,7 @@ layers:
   - {t: ↹, h: Ctrl}
   - {t: ␣, h: NUM-CCP}
   - {t: ENTER, h: FUNC-NAV}
-  - {t: '&td0', h: RSHIFT}
+  - '&mt_td1'
   - {t: ⌦, h: Alt}
   NUM-CCP:
   - {t: '`', h: Gui}
@@ -127,7 +127,7 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {type: held}
-  - {t: '&td0', h: NUM-CCP}
+  - '&mt_td1'
   - {t: ▽, type: trans}
   ADJ:
   - Boot
