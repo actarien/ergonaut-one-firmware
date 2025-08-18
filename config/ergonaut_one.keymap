@@ -112,7 +112,6 @@
         mt_td1: tap_dance_mod_caps {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
-            flavor = "hold-preferred";
             tapping-term-ms = <200>;
             bindings = <&mt RSHIFT &caps_word>, <&kp CAPSLOCK>;
             display-name = "Tap-Dance-Mod-Caps";
