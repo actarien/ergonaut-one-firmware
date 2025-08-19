@@ -116,7 +116,7 @@
             #binding-cells = <2>;
             flavor = "hold-preferred";
             tapping-term-ms = <200>;
-            bindings = <&kp>, <&capsword>;
+            bindings = <&kp>, <&caps_word>;
             display-name = "Mod-Tap-CapsWord";
         };
         // Tap-Dance avec Mod-Tap (pour Caps-Word/Caps-Lock) :
