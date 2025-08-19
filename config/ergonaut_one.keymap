@@ -111,7 +111,7 @@
         // --------------------
         // 2ème tentative
         // Mod-Tap avec Caps-Word :
-        mt_td1: mod_tap_dance_caps {
+        mt_td1: mod_tap_dance_capsword {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             flavor = "hold-preferred";
