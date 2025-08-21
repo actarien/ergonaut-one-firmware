@@ -127,6 +127,27 @@
             bindings = <&mt_td1 RSHIFT 0>, <&kp CAPSLOCK>;
             display-name = "Tap-Dance-Mod-Caps";
         };
+
+        // --------------------
+        // 3ème tentative
+        // Mod-Tap avec tap-dance :
+        mt_td2: mod_tap_dance_capsword2 {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "hold-preferred";
+            tapping-term-ms = <200>;
+            bindings = <&kp>, <&td2>;
+            display-name = "Mod-Tap-CapsWord2";
+        };
+        // Tap-Dance pour Caps-Word/Caps-Lock :
+        td2: tap_dance_mod_caps2 {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <400>;
+            bindings = <&caps_word>, <&kp CAPSLOCK>;
+            display-name = "Tap-Dance-Mod-Caps2";
+        };
+
     };
 };
 
@@ -150,7 +171,7 @@
 &mt LGUI ESC             &kp Q  &kp W  &kp E                   &kp R        &kp T      &kp Y          &kp U      &kp I         &kp O    &kp P     &mt RIGHT_GUI LEFT_BRACKET
 &mt LCTRL RIGHT_BRACKET  &hml LGUI A  &hml LALT S  &hml LCTRL D  &hml LSHFT F  &kp G      &kp H       &hmr RSHFT J      &hmr RCTRL K         &hmr LALT L    &hmr RGUI SEMI  &mt RCTRL SQT
 &mt LSHFT NUBS           &kp Z  &kp X  &kp C                   &kp V        &kp B      &kp N          &kp M      &kp COMMA     &kp DOT  &kp FSLH  &mt RSHIFT BSLH
-                                       &mt LALT BACKSPACE  &mt LCTRL TAB  &lt LWR SPACE  &lt RSE ENTER  &td1     &mt RALT DEL
+                                       &mt LALT BACKSPACE  &mt LCTRL TAB  &lt LWR SPACE  &lt RSE ENTER  &md_td2  &mt RALT DEL
             >;
         };
 
