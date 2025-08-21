@@ -41,7 +41,7 @@ layers:
   - {t: ↹, h: Ctrl}
   - {t: ␣, h: NUM-CCP}
   - {t: ENTER, h: FUNC-NAV}
-  - '&mt_td2'
+  - '&mt_td0'
   - {t: ⌦, h: Alt}
   NUM-CCP:
   - {t: '`', h: Gui}
