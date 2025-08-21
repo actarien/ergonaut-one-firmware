@@ -45,15 +45,19 @@
     continue-list = <UNDERSCORE BACKSPACE DELETE LEFT_BRACKET RIGHT_BRACKET SEMI SQT NUBS COMMA DOT FSLH BSLH>;
 };
 
-// --------------------
-// Macro pour taper mon @mel professionnelle
-ZMK_MACRO(adr_mail_pro,
-          wait-ms  = <40>;
-          tap-ms   = <40>;
-          bindings = <&kp f &kp r &kp e &kp d &kp e &kp r &kp i &kp c
-                      &kp DOT &kp b &kp o &kp i &kp t &kp e &kp u &kp x
-                      &kp AT &kp o &kp d &kp i &kp g &kp o &kp DOT &kp c &kp o &kp m>;
-    )
+/ {
+  macros {
+    // --------------------
+    // Macro pour taper mon @mel professionnelle
+    ZMK_MACRO(adr_mail_pro,
+              wait-ms  = <40>;
+              tap-ms   = <40>;
+              bindings = <&kp f &kp r &kp e &kp d &kp e &kp r &kp i &kp c
+              ,           &kp DOT &kp b &kp o &kp i &kp t &kp e &kp u &kp x
+              ,           &kp AT &kp o &kp d &kp i &kp g &kp o &kp DOT &kp c &kp o &kp m>;
+              )
+  };
+}
 
 / {
     behaviors {
