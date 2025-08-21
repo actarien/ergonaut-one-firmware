@@ -109,26 +109,6 @@
         };
 
         // --------------------
-        // 2ème tentative
-        // Mod-Tap avec Caps-Word :
-        mt_td1: mod_tap_dance_capsword {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            flavor = "hold-preferred";
-            tapping-term-ms = <200>;
-            bindings = <&kp>, <&caps_word>;
-            display-name = "Mod-Tap-CapsWord";
-        };
-        // Tap-Dance avec Mod-Tap (pour Caps-Word/Caps-Lock) :
-        td1: tap_dance_mod_caps {
-            compatible = "zmk,behavior-tap-dance";
-            #binding-cells = <0>;
-            tapping-term-ms = <400>;
-            bindings = <&mt_td1 RSHIFT 0>, <&kp CAPSLOCK>;
-            display-name = "Tap-Dance-Mod-Caps";
-        };
-
-        // --------------------
         // 3ème tentative
         // Mod-Tap avec tap-dance :
         mt_td2: mod_tap_dance_capsword2 {
