@@ -52,7 +52,7 @@
         ZMK_MACRO(adr_mail_pro,
                   wait-ms  = <40>;
                   tap-ms   = <40>;
-                  bindings = <&kp f &kp r &kp e &kp d &kp e &kp r &kp i &kp c &kp DOT &kp b &kp o &kp i &kp t &kp e &kp u &kp x &kp AT &kp o &kp d &kp i &kp g &kp o &kp DOT &kp c &kp o &kp m>;
+                  bindings = <&kp F &kp R &kp E &kp D &kp E &kp R &kp I &kp C &kp DOT &kp B &kp O &kp I &kp T &kp E &kp U &kp X &kp AT &kp O &kp D &kp I &kp G &kp O &kp DOT &kp C &kp O &kp M>;
                 )
     };
 
