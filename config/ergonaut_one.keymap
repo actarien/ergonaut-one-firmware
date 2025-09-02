@@ -100,7 +100,7 @@
             display-name = "Tap-Dance-Caps";
             #binding-cells = <0>;
             tapping-term-ms = <400>;
-            bindings = <&caps_word>, <&kp CAPSLOCK>, <&adr_mail_pro>;
+            bindings = <&kp SPACE>, <&caps_word>, <&kp CAPSLOCK>, <&adr_mail_pro>;
         };
         // Mod-Tap avec tap-dance :
         mt_td0: mod_tap_dance_caps {
