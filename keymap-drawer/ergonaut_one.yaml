@@ -74,7 +74,7 @@ layers:
   - Ctl+Insert
   - Paste
   - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
+  - Ctl+9
   - Sft+DELETE
   - Ctl+Insert
   - Paste
