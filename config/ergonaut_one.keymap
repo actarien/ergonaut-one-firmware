@@ -7,6 +7,13 @@
 #include <dt-bindings/zmk/keys.h>
 #include <behaviors/rgbled_widget.dtsi> // pour le driver d'affichage via les LEDs
 
+// Urob’s zmk-helpers macros :
+#include "zmk-helpers/helper.h"
+// Source desired key-position labels
+#include "zmk-helpers/key-labels/42.h"
+// Source unicode-chars for desired languages
+// ?utile? #include "zmk-helpers/unicode-chars/french.dtsi"
+
 // Définition des indices des 4 couches utilisées
 #define DEF 0
 #define LWR 1
@@ -45,6 +52,30 @@
     continue-list = <UNDERSCORE BACKSPACE DELETE LEFT_BRACKET RIGHT_BRACKET SEMI SQT NUBS COMMA DOT FSLH BSLH>;
 };
 
+// Activation/configuration du Home-Row-Mod pour le clavier gauche
+// (config time-less d’Urob !)
+ZMK_HOLD_TAP(hml,
+    flavor = "balanced";
+    tapping-term-ms = <280>;
+    quick-tap-ms = <175>;
+    require-prior-idle-ms = <150>;
+    bindings = <&kp>, <&kp>;
+   // List of keys on the right side of the keyboard
+    hold-trigger-key-positions = <KEYS_R THUMBS>;
+    hold-trigger-on-release;
+)
+// Activation/configuration du Home-Row-Mod pour le clavier droit
+ZMK_HOLD_TAP(hmr,
+    flavor = "balanced";
+    tapping-term-ms = <280>;
+    quick-tap-ms = <175>;
+    require-prior-idle-ms = <150>;
+    bindings = <&kp>, <&kp>;
+    // List of keys on the left side of the keyboard
+    hold-trigger-key-positions = <KEYS_L THUMBS>;
+    hold-trigger-on-release;
+)
+
 / {
     macros {
         // --------------------
@@ -59,40 +90,6 @@
     };
 
     behaviors {
-        // Activation/configuration du Home-Row-Mod pour le clavier gauche
-        hml: home_row_mod_left {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            flavor = "balanced";
-            require-prior-idle-ms = <150>;
-            tapping-term-ms = <280>;
-            quick-tap-ms = <175>;
-            bindings = <&kp>, <&kp>;
-            // List of keys on the right side of the keyboard
-            // indexes des touches dans la keymap ci-dessous !
-            hold-trigger-key-positions = <  6  7  8  9 10 11
-                                           18 19 20 21 22 23
-                                           30 31 32 33 34 35
-                                           39 40 41 >;
-            hold-trigger-on-release;
-        };
-        // Activation/configuration du Home-Row-Mod pour le clavier droit
-        hmr: home_row_mod_right {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            flavor = "balanced";
-            require-prior-idle-ms = <150>;
-            tapping-term-ms = <280>;
-            quick-tap-ms = <175>;
-            bindings = <&kp>, <&kp>;
-            // List of keys on the left side of the keyboard
-            hold-trigger-key-positions = <  0  1  2  3  4  5
-                                           12 13 14 15 16 17
-                                           24 25 26 27 28 29
-                                                    36 37 38 >;
-            hold-trigger-on-release;
-        };
-
         // --------------------
         // Tap-Dance pour Caps-Word/Caps-Lock :
         td0: tap_dance_caps {
@@ -132,10 +129,10 @@
         default_layer {
             display-name = "MAIN";
             bindings = <
-&mt LGUI  ESC   &kp Q        &kp W        &kp E         &kp R         &kp T   &kp Y  &kp U         &kp I         &kp O        &kp P           &mt RIGHT_GUI LBKT
-&mt LCTRL RBKT  &hml LGUI A  &hml LALT S  &hml LCTRL D  &hml LSHFT F  &kp G   &kp H  &hmr RSHFT J  &hmr RCTRL K  &hmr LALT L  &hmr RGUI SEMI  &mt RCTRL SQT
-&mt LSHFT NUBS  &kp Z        &kp X        &kp C         &kp V         &kp B   &kp N  &kp M         &kp COMMA     &kp DOT      &kp FSLH        &mt RSHIFT BSLH
-                                   &mt LALT BACKSPACE  &mt LCTRL TAB  &lt LWR SPACE      &lt RSE ENTER  &mt_td0 RSHIFT 0 &mt RALT DEL
+&mt LGUI  ESC   &kp Q        &kp W        &kp E         &kp R         &kp T         &kp Y  &kp U         &kp I         &kp O        &kp P           &mt RIGHT_GUI LBKT
+&mt LCTRL RBKT  &hml LGUI A  &hml LALT S  &hml LCTRL D  &hml LSHFT F  &kp G         &kp H  &hmr RSHFT J  &hmr RCTRL K  &hmr LALT L  &hmr RGUI SEMI  &mt RCTRL SQT
+&mt LSHFT NUBS  &kp Z        &kp X        &kp C         &kp V         &kp B         &kp N  &kp M         &kp COMMA     &kp DOT      &kp FSLH        &mt RSHIFT BSLH
+                               &mt LALT BACKSPACE  &mt LCTRL TAB  &lt LWR SPACE     &lt RSE ENTER  &mt_td0 RSHIFT 0 &mt RALT DEL
             >;
         };
 
@@ -145,17 +142,17 @@
 &mt LGUI GRAVE       &kp N1      &kp N2         &kp N3       &kp N4       &kp N5      &kp N6      &kp N7          &kp N8       &kp N9       &kp N0      &kp MINUS
 &mt LCTRL LS(GRAVE)  &kp LS(N1)  &kp LS(N2)     &kp LS(N3)   &kp LS(N4)   &kp LS(N5)  &kp LS(N6)  &kp LS(N7)      &kp LS(N8)   &kp LS(N9)   &kp LS(N0)  &mt RCTRL LS(MINUS)
 &mt LSHIFT EQUAL     &trans      &kp LS(DELETE) &kp LC(INS)  &kp LS(INS)  &trans      &kp LC(N9)  &kp LS(DELETE)  &kp LC(INS)  &kp LS(INS)  &trans      &kp LS(EQUAL)
-                                       &trans            &lt RSE TAB       &trans      &trans            &trans          &trans
+                                       &trans            &lt RSE TAB       &trans     &trans            &trans          &trans
             >;
         };
 
         raise_layer {
             display-name = "FUNC-NAV";
             bindings = <
-&kp LGUI          &kp F11  &kp F12  &kp K_PREV  &kp K_PLAY_PAUSE  &kp K_NEXT  &kp HOME    &kp PG_UP     &kp UP_ARROW  &kp PAGE_DOWN  &trans  &kp INS
-&kp LSHFT         &kp F1   &kp F2   &kp F3      &kp F4            &kp F5      &kp END     &kp LEFT      &kp DOWN      &kp RIGHT      &trans  &kp PRINTSCREEN
-&kp LEFT_CONTROL  &kp F6   &kp F7   &kp F8      &kp F9            &kp F10     &kp K_UNDO  &kp C_VOL_DN  &kp K_MUTE    &kp C_VOL_UP   &trans  &trans
-                                    &trans      &trans            &trans      &trans      &lt LWR SPACE           &trans
+&kp LGUI          &kp F11  &kp F12  &kp K_PREV  &kp K_PLAY_PAUSE  &kp K_NEXT        &kp HOME    &kp PG_UP     &kp UP_ARROW  &kp PAGE_DOWN  &trans  &kp INS
+&kp LSHFT         &kp F1   &kp F2   &kp F3      &kp F4            &kp F5            &kp END     &kp LEFT      &kp DOWN      &kp RIGHT      &trans  &kp PRINTSCREEN
+&kp LEFT_CONTROL  &kp F6   &kp F7   &kp F8      &kp F9            &kp F10           &kp K_UNDO  &kp C_VOL_DN  &kp K_MUTE    &kp C_VOL_UP   &trans  &trans
+                                    &trans      &trans            &trans            &trans      &lt LWR SPACE &trans
             >;
         };
 

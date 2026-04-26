@@ -14,16 +14,16 @@ layers:
   - P
   - {t: '[', h: RIGHT GUI}
   - {t: ']', h: Ctrl}
-  - {t: A, h: Gui}
-  - {t: S, h: Alt}
-  - {t: D, h: Ctrl}
-  - {t: F, h: Shift}
+  - '&hml LGUI A'
+  - '&hml LALT S'
+  - '&hml LCTRL D'
+  - '&hml LSHFT F'
   - G
   - H
-  - {t: J, h: Shift}
-  - {t: K, h: Ctrl}
-  - {t: L, h: Alt}
-  - {t: ;, h: Gui}
+  - '&hmr RSHFT J'
+  - '&hmr RCTRL K'
+  - '&hmr LALT L'
+  - '&hmr RGUI SEMI'
   - {t: '''', h: Ctrl}
   - {t: NUBS, h: Shift}
   - Z
@@ -41,7 +41,7 @@ layers:
   - {t: ↹, h: Ctrl}
   - {t: ␣, h: NUM-CCP}
   - {t: ENTER, h: FUNC-NAV}
-  - {t: '&td0', h: RSHIFT}
+  - '&mt_td0 RSHIFT 0'
   - {t: ⌦, h: Alt}
   NUM-CCP:
   - {t: '`', h: Gui}
