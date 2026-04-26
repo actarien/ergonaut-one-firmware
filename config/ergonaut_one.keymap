@@ -53,18 +53,6 @@
 };
 
 / {
-    macros {
-        // --------------------
-        // Macro pour taper mon @mel professionnelle
-        ZMK_MACRO(adr_mail_pro,
-                  wait-ms  = <40>;
-                  tap-ms   = <40>;
-                  // touches voulues en bépo :       frederic.boiteux@odigo.com
-                  // touches équivalentes en qwerty: /lfifldhvqrdjfsc6rid,rvhr’
-                  bindings = <&kp SLASH &kp L &kp F &kp I &kp F &kp L &kp D &kp H &kp V &kp Q &kp R &kp D &kp J &kp F &kp S &kp C &kp N6 &kp R &kp I &kp D &kp COMMA &kp R &kp V &kp H &kp R &kp SQT>;
-                )
-    };
-
     behaviors {
         // --------------------
         // Tap-Dance pour Caps-Word/Caps-Lock :
@@ -86,6 +74,17 @@
         };
 
     };
+};
+
+// --------------------
+// Macro pour taper mon @mel professionnelle
+ZMK_MACRO(adr_mail_pro,
+    wait-ms  = <40>;
+    tap-ms   = <40>;
+    // touches voulues en bépo :       frederic.boiteux@odigo.com
+    // touches équivalentes en qwerty: /lfifldhvqrdjfsc6rid,rvhr’
+    bindings = <&kp SLASH &kp L &kp F &kp I &kp F &kp L &kp D &kp H &kp V &kp Q &kp R &kp D &kp J &kp F &kp S &kp C &kp N6 &kp R &kp I &kp D &kp COMMA &kp R &kp V &kp H &kp R &kp SQT>;
+)
 
 // Activation/configuration du Home-Row-Mod pour le clavier gauche
 // (config time-less d’Urob !)
@@ -111,8 +110,6 @@ ZMK_HOLD_TAP(hmr,
     hold-trigger-on-release;
 )
 
-
-};
 
 / {
     conditional_layers {
