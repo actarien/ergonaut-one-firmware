@@ -8,6 +8,7 @@ manifest:
 
     - name: caksoylar  # https://github.com/caksoylar/zmk-rgbled-widget
       url-base: https://github.com/caksoylar
+
     - name: urob
       url-base: https://github.com/urob
 
@@ -20,9 +21,11 @@ manifest:
     - name: ergonautkb-zmk-module
       remote: ergonautkb
       revision: main
+
     - name: zmk-rgbled-widget
       remote: caksoylar
-      revision: main
+      revision: v0.3
+
     - name: zmk-helpers
       remote: urob
       revision: v0.3 # Should match ZMK release.
