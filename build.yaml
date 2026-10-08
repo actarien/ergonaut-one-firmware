@@ -7,3 +7,4 @@ include:
     artifact-name: ergonaut_one_right
   - board: seeeduino_xiao_ble
     shield: settings_reset
+    artifact-name: ergonaut_one_settings_reset
